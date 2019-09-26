@@ -13,6 +13,9 @@ public class OverwatchApiApplication {
 	@Autowired
 	private HeroRepository heroes;
 
+	@Autowired
+	private AbilityRepository abilities;
+
 	public static void main(String[] args) {
 		SpringApplication.run(OverwatchApiApplication.class, args);
 	}
@@ -22,16 +25,37 @@ public class OverwatchApiApplication {
 	public void checkIfHeroDbExists() {
 		if (heroes.count() == 0) {
 			System.out.println("Hero database is not yet initialized");
-			initializeDb();
+			storeHeroes();
+		}
+		if (abilities.count() == 0) {
+			System.out.println("Ability database is not yet initialized");
+			storeAbilities();
 		}
 	}
 
-	private void initializeDb() {
-		System.out.println("Filling hero DB");
+	private void storeAbilities() {
+		RestTemplate restTemplate;
+		String url = "https://overwatch-api.net/api/v1/ability/";
+		do {
+			restTemplate = new RestTemplate();
+			AbilityResponse abilityResponse = restTemplate.getForObject(url, AbilityResponse.class);
+
+			abilities.saveAll(abilityResponse.getData());
+			url = abilityResponse.getNext();
+			if (url != null) {
+				url = url.replace("http:/", "https:/");
+			}
+		} while (url != null);
+		abilities.flush();
+
+		System.out.println("Abilities retrieved and stored.");
+	}
+
+	private void storeHeroes() {
 		RestTemplate restTemplate = new RestTemplate();
 		HeroResponse heroResponse = restTemplate.getForObject("https://overwatch-api.net/api/v1/hero/",
 				HeroResponse.class);
-		
+
 		heroes.saveAll(heroResponse.getHeroes());
 		heroes.flush();
 		System.out.println("Heroes retrieved and stored.");

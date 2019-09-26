@@ -3,16 +3,15 @@ package com.bxabi.overwatch;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import io.swagger.annotations.ApiModel;
 
 @ApiModel
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
+// @JsonIgnoreProperties(ignoreUnknown = true)
 public class Hero {
 	@Id
 	private int id;
+
 	private String name;
 	private String real_name;
 	private int health;
