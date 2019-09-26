@@ -14,3 +14,4 @@ At the first start it retrieves the data from the original overwatch api, and st
 /api/abilities/ - ability list
 /api/abilities/{ability_id} - ability data
 ```
+Api documentation: http://localhost:8080/swagger-ui.html
