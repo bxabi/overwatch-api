@@ -1,4 +1,4 @@
-package com.bxabi.overwatch;
+package com.bxabi.overwatch.ability;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.bxabi.overwatch.hero.Hero;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModel;

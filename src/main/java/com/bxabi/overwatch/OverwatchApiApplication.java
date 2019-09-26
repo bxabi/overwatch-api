@@ -7,6 +7,11 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.web.client.RestTemplate;
 
+import com.bxabi.overwatch.ability.AbilityRepository;
+import com.bxabi.overwatch.ability.AbilityResponse;
+import com.bxabi.overwatch.hero.HeroRepository;
+import com.bxabi.overwatch.hero.HeroResponse;
+
 @SpringBootApplication
 public class OverwatchApiApplication {
 

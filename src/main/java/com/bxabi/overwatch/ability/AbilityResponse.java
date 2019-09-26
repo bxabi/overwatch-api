@@ -1,4 +1,4 @@
-package com.bxabi.overwatch;
+package com.bxabi.overwatch.ability;
 
 import java.util.List;
 

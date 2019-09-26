@@ -1,4 +1,4 @@
-package com.bxabi.overwatch;
+package com.bxabi.overwatch.hero;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
