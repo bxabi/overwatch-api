@@ -16,20 +16,27 @@ import io.swagger.annotations.ApiModel;
 public class Ability {
 
 	@Id
-	private int id;
+	private Integer id;
 	private String name;
 
 	@Column(length = 1000)
 	private String description;
 
 	@JsonProperty("is_ultimate")
-	private boolean isUltimate;
+	private Boolean isUltimate;
 
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "id")
 	private Hero hero;
 
-	public int getId() {
+	public Ability() {
+	}
+
+	public Ability(Integer hero_id) {
+		this.hero = new Hero(hero_id);
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
@@ -41,7 +48,7 @@ public class Ability {
 		return description;
 	}
 
-	public boolean isUltimate() {
+	public Boolean isUltimate() {
 		return isUltimate;
 	}
 

@@ -7,18 +7,24 @@ import io.swagger.annotations.ApiModel;
 
 @ApiModel
 @Entity
-// @JsonIgnoreProperties(ignoreUnknown = true)
 public class Hero {
 	@Id
-	private int id;
+	private Integer id;
 
 	private String name;
 	private String real_name;
-	private int health;
-	private int armour;
-	private int shield;
+	private Integer health;
+	private Integer armour;
+	private Integer shield;
 
-	public int getId() {
+	public Hero() {
+	}
+
+	public Hero(Integer hero_id) {
+		id = hero_id;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
@@ -30,15 +36,15 @@ public class Hero {
 		return real_name;
 	}
 
-	public int getHealth() {
+	public Integer getHealth() {
 		return health;
 	}
 
-	public int getArmour() {
+	public Integer getArmour() {
 		return armour;
 	}
 
-	public int getShield() {
+	public Integer getShield() {
 		return shield;
 	}
 }
